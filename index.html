@@ -1,9 +1,9 @@
+<!DOCTYPE html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Scorekeeper</title>
-
-<link rel="manifest" href="manifest.json">
 
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#4CAF50">
@@ -45,3 +45,42 @@
   }
 </style>
 </head>
+
+<body>
+
+<div class="half top">
+  <div id="score1" class="score">0</div>
+  <div>
+    <button onclick="changeScore(1, 1)">+1</button>
+    <button onclick="changeScore(1, -1)">−1</button>
+    <button onclick="resetScore(1)">Reset</button>
+  </div>
+</div>
+
+<div class="half bottom">
+  <div id="score2" class="score">0</div>
+  <div>
+    <button onclick="changeScore(2, 1)">+1</button>
+    <button onclick="changeScore(2, -1)">−1</button>
+    <button onclick="resetScore(2)">Reset</button>
+  </div>
+</div>
+
+<script>
+let scores = [0, 0];
+
+function changeScore(player, amount) {
+  scores[player - 1] += amount;
+  if (scores[player - 1] < 0) scores[player - 1] = 0;
+  document.getElementById("score" + player).textContent = scores[player - 1];
+}
+
+function resetScore(player) {
+  scores[player - 1] = 0;
+  document.getElementById("score" + player).textContent = 0;
+}
+</script>
+
+</body>
+</html>
+``
